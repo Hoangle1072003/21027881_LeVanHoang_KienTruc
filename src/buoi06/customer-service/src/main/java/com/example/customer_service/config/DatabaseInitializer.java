@@ -1,7 +1,7 @@
-package com.example.product_service.config;
+package com.example.customer_service.config;
 
-import com.example.product_service.repository.ProductRepository;
-import com.example.product_service.schema.Product;
+import com.example.customer_service.repository.CustomerRepository;
+import com.example.customer_service.schema.Customer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -18,19 +18,18 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class DatabaseInitializer implements CommandLineRunner {
-    private final ProductRepository productRepository;
-
+    private final CustomerRepository customerRepository;
     @Override
     public void run(String... args) throws Exception {
-        long count = productRepository.count();
+        long count = customerRepository.count();
         if (count == 0) {
             for (int i = 0; i < 10; i++) {
-                Product product = new Product();
-                product.setName("Product 1");
-                product.setDescription("Product 1 details");
-                product.setPrice(3.0);
-                product.setStock(3);
-                productRepository.save(product);
+                Customer customer = new Customer();
+                customer.setName("Customer " + i);
+                customer.setEmail("customer_" + i + "@example.com");
+                customer.setPhone("123456789" + i);
+                customerRepository.save(customer);
+
             }
         }
         if (count != 0) {

@@ -1,4 +1,4 @@
-package com.example.product_service.shema;
+package com.example.product_service.schema;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(collation = "products")
+@Document(collection  = "products")
 public class Product {
     @Id
     private String id;

@@ -1,10 +1,11 @@
 package com.example.product_service.controller;
 
 import com.example.product_service.service.ProductService;
-import com.example.product_service.shema.Product;
+import com.example.product_service.schema.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +32,11 @@ public class ProductController {
         List<Product> products = productService.findAll();
         System.out.println("products: " + products);
         return ResponseEntity.ok(products);
+    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable String id) {
+        Product product = productService.findById(id);
+        return ResponseEntity.ok(product);
     }
 }

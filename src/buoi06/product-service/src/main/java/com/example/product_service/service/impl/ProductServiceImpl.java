@@ -2,7 +2,7 @@ package com.example.product_service.service.impl;
 
 import com.example.product_service.repository.ProductRepository;
 import com.example.product_service.service.ProductService;
-import com.example.product_service.shema.Product;
+import com.example.product_service.schema.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAll() {
-        List<Product> products = productRepository.findAll();
-        return products;
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Product findById(String id) {
+        return productRepository.findById(id).orElse(null);
     }
 }

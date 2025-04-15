@@ -1,6 +1,6 @@
 package com.example.product_service.service;
 
-import com.example.product_service.shema.Product;
+import com.example.product_service.schema.Product;
 
 import java.util.List;
 
@@ -18,4 +18,6 @@ public interface ProductService {
     Product save(Product product);
 
     List<Product> findAll();
+
+    Product findById(String id);
 }
